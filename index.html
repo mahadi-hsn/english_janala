@@ -36,6 +36,7 @@
 </head>
 
 <body>
+    <!-- Header section -->
     <header>
         <div class="bg-slate-100 shadow-sm">
             <div class="navbar w-11/12 mx-auto">
@@ -112,6 +113,9 @@
             </div>
         </section>
     </header>
+
+
+    <!-- Main section -->
     <main>
         <section id="lesson" class="w-11/12 mx-auto">
             <h1 class="text-4xl text-center font-bold my-6"><span class="text-sky-400">Let's</span> Learn Vocabularies
@@ -121,7 +125,30 @@
 
             </div>
         </section>
+
+        <section id="wordContainer" class="bg-gray-300 w-11/12 mx-auto p-12 my-10 grid grid-cols-3 gap-5 ">
+
+            <div class="text-center col-span-full space-y-4 py-4">
+                <p class="text-xl font-normal text-gray-500 hind-siliguri">আপনি এখনো কোন Lesson Select করেন নি</p>
+                <p class="text-4xl font-semibold hind-siliguri">একটি Lesson Select করুন।</p>
+            </div>
+
+        </section>
+
+
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle ">
+            <div id="detailsBox" class="modal-box">
+                
+            </div>
+        </dialog>
     </main>
+
+
+    <!-- Footer section -->
     <footer></footer>
 
     <script src="JS files/index.js"></script>

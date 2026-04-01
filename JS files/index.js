@@ -1,3 +1,19 @@
+const createElement = (array) =>{
+    const htmlElement = array.map((el) => `<span class='btn'>${el}</span>`);
+    return htmlElement.join(' ');
+}
+
+const manageSpinner = (status) =>{
+  if(status == true){
+    document.getElementById('spinner').classList.remove('hidden');
+    document.getElementById('wordContainer').classList.add('hidden');
+  }
+  else{
+    document.getElementById('wordContainer').classList.remove('hidden');
+    document.getElementById('spinner').classList.add('hidden');
+  }
+}
+
 const loadLessons = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((response) => response.json())
@@ -12,6 +28,7 @@ const removeActive = () => {
 };
 
 const loadWordLevel = (id) => {
+  manageSpinner(true)
   const url = fetch(`https://openapi.programming-hero.com/api/level/${id}`);
   url
     .then((response) => response.json())
@@ -31,24 +48,9 @@ const loadWordDetails = async (id) => {
 };
 
 
-// {
-//     "word": "Eager",
-//     "meaning": "আগ্রহী",
-//     "pronunciation": "ইগার",
-//     "level": 1,
-//     "sentence": "The kids were eager to open their gifts.",
-//     "points": 1,
-//     "partsOfSpeech": "adjective",
-//     "synonyms": [
-//         "enthusiastic",
-//         "excited",
-//         "keen"
-//     ],
-//     "id": 5
-// }
-
 const displayWordDetails = (word) => {
   console.log(word);
+  
   const detailsBox = document.getElementById("detailsBox");
   detailsBox.innerHTML = `
   <div class="border p-4 rounded-md space-y-6">
@@ -69,9 +71,7 @@ const displayWordDetails = (word) => {
         <div>
             <p class="text-xl font-semibold hind-siliguri">সমার্থক শব্দ গুলো</p>
             <div>
-              <span class="btn">Hello</span>
-              <span class="btn">Hello</span>
-              <span class="btn">Hello</span>
+              ${createElement(word.synonyms)}
             </div>
         </div>
   </div>
@@ -115,6 +115,7 @@ const displayWord = (words) => {
 
     wordContainer.append(wordCard);
   });
+  manageSpinner(false);
 };
 
 const displayLevels = (lessons) => {
@@ -133,3 +134,5 @@ const displayLevels = (lessons) => {
 };
 
 loadLessons();
+
+
